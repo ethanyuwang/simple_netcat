@@ -4,4 +4,4 @@
 extern void start_client();
 
 
-//extern void service();
+extern void service();

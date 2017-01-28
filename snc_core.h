@@ -11,15 +11,13 @@
 #include <unistd.h>
 #include <errno.h>
 
+#include <arpa/inet.h>
+#include <netdb.h> 
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/select.h>
 #include <netinet/in.h>
-
-#include <arpa/inet.h>
-#include <netdb.h> 
-
-#define MAX 1024
 
 /* struct that stores ip address, port, and options */
 struct options{
@@ -52,7 +50,10 @@ extern void options_print(void);
 /* resolve hostname to ip */
 extern int hostname_to_ip(char * hostname , char* ip);
 
-/* print error message to @stderr and exit */
+/* print error message to @stderr*/
 extern void internalError(const char *, ...);
+
+/* print message to @stderr and exit */
+extern void endProgram(char *msg);
 
 #endif

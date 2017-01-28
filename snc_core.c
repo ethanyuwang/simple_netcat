@@ -64,13 +64,12 @@ void internalError(const char *format, ...){
     va_list ap;
     va_start(ap, format);
     vfprintf(stderr, format, ap);
+    fprintf(stderr, "\n");
     va_end(ap);
-    //fprintf(stderr, "QUITTING.\n");
-    exit(EXIT_FAILURE);
 }
 
 
-void die(char *msg){
-    perror(msg);
+void endProgram(char *msg){
+    fprintf(stderr, msg);
     exit(EXIT_FAILURE);
 }

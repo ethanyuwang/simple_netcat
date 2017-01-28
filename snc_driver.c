@@ -29,7 +29,6 @@ char* validate_ip(char *p){
     if(inet_pton(AF_INET, p, &(sa.sin_addr))==0){
         inputError("Invalid source ip address number: %s\n", p);
     }
-
     return p;
 }
 
@@ -57,7 +56,7 @@ int main(int argc, char *argv[]){
                 case 'u': opt.udp = 1;
                           break;
 
-                default: break; //inputError();
+                default: inputError(" "); //inputError();
             }
             index = optind;
         }
@@ -83,12 +82,13 @@ int main(int argc, char *argv[]){
         inputError("hostname can not be resolved\n");
     }
 
+    options_print();
+
 
     /* dispatch server/client */
     if(opt.listen)
         start_server();
     else
         start_client();
-
     return 0;
 }
